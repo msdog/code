@@ -5,7 +5,7 @@
             <label for="" >手机</label>
             <input type="text" v-model="phone" @change="sb($event)" value="phone">
         </form>
-            <button v-on:click="reff"> cs-ref</button>
+            <button @click="reff"> cs-ref</button>
     </div>
 </template>
 <script>

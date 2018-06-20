@@ -8,17 +8,20 @@ export default {
     }
   },
   mutations: {
-    toggleCollapse(state) {//这里的state对应着上面这个state
+    toggleCollapse(state, data) {//这里的state对应着上面这个state
       state.toggle = !state.toggle// 使用$store.commit('switch_dialog')调用
       //你还可以在这里执行其他的操作改变state
     }
   },
-  actions: {
+  actions: {//this.$store.dispatch('toggleCollapse', data) 触发action
     toggleCollapse(context){
-      context.commit('toggleCollapse')
+      context.commit('toggleCollapse',data)//TOGGLE_COLLAPSE
       //你还可以在这里触发其他的mutations方法
     }
   }
+  // mutation_types: {
+  //   export const TOGGLE_COLLAPSE = 'TOGGLE_COLLAPSE'
+  // }
 }
 //   <template >
 //    <el-dialog : visible.sync="show"></el-dialog>

@@ -1,39 +1,26 @@
 <template>
   <div id="home">
-    <app-signup></app-signup>
-    <app-carousel></app-carousel>
-    <app-users v-bind:users='users'></app-users>
-    <app-footer></app-footer>
+    <el-button type="primary" @click="emit">emit</el-button>
+    <div class="div" v-for="x in 31" :key="x">
+      <img  :src="'https://resource.720think.com/v/Data/upload/think720/201705/993344470/3Dmedia/201708/795/'+(21295+x)+'.jpg'" >
+    </div>
   </div>
 </template>
 
 <script>
-  import Vue from "vue";
-  import Footer from "./footer";
-  import users from "./users";
-  import  carousel  from "./carousel";
-  import  signup  from "./signup";
   export default {
     name: "home",
     data () {
       return {
-        users:{}
+        users:{'name':'小明','age':21}
       }
     },
-    components:{
-        'app-footer':Footer,
-        'app-users':users,
-        'app-carousel':carousel,
-        'app-signup':signup,
-    },  
-    created () {
-      this.$http
-      .get("http://jsonplaceholder.typicode.com/users")
-      .then((data)=>{
-        this.users = data.body;
-        console.log(data.body[0].name);
-      });
-    },
+    methods: {
+      emit() {
+        this.$tools.send('emit', this.users)
+      }
+    }
+
   };
 
 </script>
@@ -45,5 +32,12 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+.div{
+  float: left;
+}
+img{
+  width: 100px;
+  height: 100px;
 }
 </style>

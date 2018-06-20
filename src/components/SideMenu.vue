@@ -32,7 +32,6 @@ import { mapState } from "vuex";
 		},
 		methods: {
 			routes() {
-				console.log(this.$router.options.routes);
 				this.routesData = this.$router.options.routes
 			}
 		}
@@ -44,8 +43,11 @@ import { mapState } from "vuex";
 		width: auto;
 	}
 	ul {
-		height: 100vh;
 		overflow: hidden;
+	}
+	.side-menu {
+		height: 100vh;
+		background-color: #535b63;
 	}
 	.el-menu-vertical-demo:not(.el-menu--collapse) {
 		width: 180px;

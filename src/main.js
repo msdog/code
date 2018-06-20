@@ -10,6 +10,10 @@ import echarts from 'echarts'
 import 'echarts/theme/macarons.js'
 import store from "@/store";
 
+import bus from "./plugins/bus.js";
+
+Vue.use(bus)
+
 Vue.use(Vresource)//全局注册 每个组件都可以使用此插件 单独注册单独使用
 Vue.use(ElementUI,{size:'middle'})
 Vue.prototype.$echarts = echarts 
@@ -23,4 +27,8 @@ new Vue({
   components: { App },
   template: '<App/>',
   render: h => h(App),
+  mounted () {
+    console.log(this.$tools);
+    
+  }
 })

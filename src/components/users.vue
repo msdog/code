@@ -1,41 +1,47 @@
 <template>
-	<div id="users">
-		<el-button type="primary" @click="fn"></el-button>
+	<div>
 		<ul>
-			<li v-for="(user,index) in users" v-if="index<=5" v-bind:users="users" :key="index">
-				<h1>name:{{users[index].name}}</h1>
-				<h2>addr:{{users[index].address.street}}</h2>
-				<span>email:{{users[index].email}}</span>
+			<li v-for="(user,index) in users" v-if="index<=5"  :key="index">
+				<h1>name:{{user.name}}</h1>
+				<h2>addr:{{user.address.street}}</h2>
+				<span >email:{{user.email}}</span>
 			</li>
 		</ul>
+		<el-button type="primary" @click="submit" >gohome</el-button>
+		
 	</div>
 </template>
 
 <script>
-	export default {
-		name: "users",
-		// props: ['users'],
-		data() {
-			return {
-				users: null
-			}
+export default {
+	// name: "users",
+	// props: ['users'],
+	data() {
+		return {
+			users: null
+		}
+	},
+	mounted() {
+		this.$http
+			.get("http://jsonplaceholder.typicode.com/users")
+			.then((data) => {
+				this.users = data.body;
+			});
+	},
+	motheds: {
+		go() {
+			console.log(1);
+			
+			// router.go({
+			// 	path: '/a/1',
+			// 	force: true
+			// })
 		},
-		motheds: {
-			fn() {
-				router.go({
-					path: '/a/1',
-					force: true
-				})
-			}
-		},
-		created() {
-			this.$http
-				.get("http://jsonplaceholder.typicode.com/users")
-				.then((data) => {
-					this.users = data.body;
-				});
-		},
+		submit() {
+			console.log(1);
+		}
 	}
+}
 </script>
 
 <style scoped>

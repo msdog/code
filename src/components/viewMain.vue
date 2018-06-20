@@ -5,16 +5,19 @@
       <top-bar></top-bar>
       <router-view></router-view>
     </div>
+    <el-dialog></el-dialog>
   </div>
 </template>
 
 <script>
 import SideMenu from "@/components/SideMenu.vue";
 import topBar from "@/components/topBar.vue";
+import elDialog from "@/components/model/dialog";
 export default {
   components: {
     SideMenu,
-    topBar
+    topBar,
+    elDialog
   }
 };
 </script>

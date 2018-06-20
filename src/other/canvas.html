@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    span {
+      width: auto;
+      background: linear-gradient(90deg, yellow 0%, pink 20%, green 60%, olive 80%, fuchsia 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+
+<body>
+  <span>123456789</span>
+  <canvas id="canvas" style="width: 100vw;height: 100vh; " width="1920" height="900">123</canvas>
+</body>
+
+</html>
+<script>
+  var canvas = document.querySelector("#canvas")
+  console.log(canvas);
+  var ctx = canvas.getContext('2d')
+
+  // ctx.beginPath()
+  // ctx.rect(0, 0, 1920,100)
+  // ctx.fillStyle = 'rgba(255,0,0,0.25)'
+  // ctx.fill()
+
+  // ctx.beginPath()
+  // var grd = ctx.createRadialGradient(400, 350, 100, 400,350,200)
+  var grd = ctx.createLinearGradient(0, 600, 800, 0)
+  // grd.addColorStop(0.0, 'olive')
+  // grd.addColorStop(0.2, 'yellow')
+  // grd.addColorStop(0.4, 'YellowGreen')
+  // grd.addColorStop(0.6, 'pink')
+  // grd.addColorStop(0.8, 'green')
+  // grd.addColorStop(1, 'skyBlue')
+  grd.addColorStop(0, "olive");
+  grd.addColorStop(0.25, "YellowGreen");
+  grd.addColorStop(0.5, "aqua");
+  grd.addColorStop(0.75, "fuchsia");
+  grd.addColorStop(0.9, "teal");
+
+  // ctx.beginPath()
+  // //圆 心, r, 线开始,线结束
+  // ctx.arc(400, 350, 300, 0, Math.PI * 2);
+
+  // ctx.strokeStyle = grd;
+  // ctx.lineWidth = 5
+  // ctx.stroke();
+  // for (let i = 0; i < 30; i++) {
+  //   draw(ctx, 100+10*i, 50+10*i, 600-20*i, 600-20*i, grd)
+  //   // draw(ctx, 105+10*i, 55+10*i, 590-20*i, 590-20*i, grd)
+  // }
+  // ctx.beginPath();
+
+  // ctx.moveTo(600, 350)//二次贝塞曲线 起点, 
+  // ctx.quadraticCurveTo(300,300,400, 600)//弓点, 终点
+  // ctx.strokeStyle = grd;
+  // ctx.lineWidth = 5
+  // ctx.stroke();
+  // //三次 弓点, 弓点, 终点
+  // for (let i = 0; i < 20; i++) {
+  //   ctx.beginPath();
+  //   ctx.moveTo(100+i*5, 250+i*5);
+  //   ctx.bezierCurveTo(249+i*50, 66+i*50, 293+i*5, 369+i*5, 420+i*5, 235+i*5);
+  //   ctx.strokeStyle = grd;
+  //   ctx.lineWidth = 10
+  //   ctx.stroke();
+
+  // }
+
+
+  // ctx.save();
+  // ctx.beginPath();
+  // ctx.translate(400,200)
+  // ctx.rotate(300*Math.PI/180)
+  // ctx.moveTo(100, 250);
+  // ctx.bezierCurveTo(249, 66, 293, 369, 420, 235);
+  // ctx.fillStyle = grd;
+  // // ctx.lineWidth = 5
+  // ctx.fill();
+  // ctx.restore();
+  setInterval(() => {
+    drawy()
+  }, 50)
+
+  function drawy() {
+    for (let i = 0; i < 20; i++) {
+      ctx.save()
+      ctx.translate(1920 * Math.random(), 900 * Math.random())
+      ctx.rotate(i * 15 * Math.PI / 180)
+      ctx.fillStyle = "rgba(255,0,0,0.25)";
+      ctx.fillRect(0, 0, 60, 60)
+      ctx.restore()
+      ctx.save()
+      ctx.translate(1920 * Math.random(), 900 * Math.random())
+      ctx.rotate(i * 15 * Math.PI / 180)
+      ctx.fillStyle = "rgba(0,255,0,0.25)";
+      ctx.fillRect(0, 0, 55, 55)
+      ctx.restore()
+    }
+  }
+
+  function draw(context, x, y, w, h, color) {
+    context.beginPath()
+    context.rect(x, y, w, h)
+    context.lineWidth = 5
+    context.strokeStyle = color
+    context.stroke()
+  }
+</script>
