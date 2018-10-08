@@ -89,28 +89,39 @@
   // ctx.restore();
   setInterval(() => {
     drawy()
-  }, 50)
+  }, 550)
 
   function drawy() {
     for (let i = 0; i < 20; i++) {
       ctx.save()
-      ctx.translate(1920 * Math.random(), 900 * Math.random())
+      // ctx.translate(1920 * Math.random(), 900 * Math.random())
       ctx.rotate(i * 15 * Math.PI / 180)
       ctx.fillStyle = "rgba(255,0,0,0.25)";
-      ctx.fillRect(0, 0, 60, 60)
+      // ctx.fillRect(0, 0, 60, 60)
+      ctx.beginPath()
+      //圆 心, r, 线开始,线结束
+      ctx.arc(i*Math.random()*90, i*Math.random()*90, Math.random()*300, 0, Math.PI * 2);
+
+      ctx.strokeStyle = grd;
+      ctx.lineWidth = 5
+      ctx.stroke();
       ctx.restore()
-      ctx.save()
-      ctx.translate(1920 * Math.random(), 900 * Math.random())
-      ctx.rotate(i * 15 * Math.PI / 180)
-      ctx.fillStyle = "rgba(0,255,0,0.25)";
-      ctx.fillRect(0, 0, 55, 55)
-      ctx.restore()
+      
+      // ctx.save()
+
+    //   ctx.translate(1920 * Math.random(), 900 * Math.random())
+    //   ctx.rotate(i * 15 * Math.PI / 180)
+    //   ctx.fillStyle = "rgba(0,255,0,0.25)";
+    //   // ctx.fillRect(0, 0, 55, 55)
+    //   ctx.arc(400, 350, 300, 0, Math.PI * 2);
+    //   ctx.restore()
     }
   }
 
   function draw(context, x, y, w, h, color) {
     context.beginPath()
-    context.rect(x, y, w, h)
+    // context.rect(x, y, w, h)
+    ctx.arc(x, y, 300, 0, Math.PI * 2);
     context.lineWidth = 5
     context.strokeStyle = color
     context.stroke()
